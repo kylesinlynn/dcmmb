@@ -1,6 +1,8 @@
 #  `dcmmb` aka. Docker MySQL & MongoDB Containers Backup script
 To use `dcmmb` efficiently, you have to know some [Docker](https://docker.com) commands uses, and linux command `crontab`.
 
+> This is 'main' branch which is used for development purpose. Go to [Releases](https://github.com/kylesinlynn/dcmmb/releases) for stable use.
+
 # Content
 - [`dcmmb` aka. Docker MySQL \& MongoDB Containers Backup script](#dcmmb-aka-docker-mysql--mongodb-containers-backup-script)
 - [Content](#content)
