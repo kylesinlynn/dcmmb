@@ -21,11 +21,11 @@ fi
 
 # Backup MySQL database
 echo "MySQL -> creating backup $DATE"
-docker exec $MYSQL_DOCKER_CONTAINER sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > "$BACKUP_DIR"/mysql_backup_$DATE.sql
+docker exec $MYSQL_DOCKER_CONTAINER sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' | gzip -c > "$BACKUP_DIR"/mysql_backup_$DATE.gz
 
 # Backup MongoDB database
 echo "Mongo -> creating backup $DATE"
-docker exec $MONGO_DOCKER_CONTAINER mongodump --archive="$BACKUP_DIR"/mongo_backup_$DATE.gz --gzip --db=$MONGO_DATABASE --username=$MONGO_USERNAME --password=$MONGO_PASSWORD
+docker exec $MONGO_DOCKER_CONTAINER mongodump --gzip --archive="$BACKUP_DIR"/mongo_backup_$DATE.gz --username=$MONGO_USERNAME --password=$MONGO_PASSWORD
 
 # Delete old backups (keep only the latest upon count)
 echo "Deleting Old Backups..."
